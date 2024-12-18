@@ -1,4 +1,15 @@
 from helpers import create_account, deposit_money, withdraw_money, check_balance, display_all_accounts
+def Login():
+    print("--- Login ---")
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    # Check if username and password are valid (for demonstration purposes, hardcoded credentials are used)
+    if username == 'admin' and password == 'password':
+        print("Login successful.")
+        show_menu()
+    else:
+        print("Invalid credentials.")
 def show_menu():
     print("--- Welcome to the Python Bank ---")
     print("1. Create Account")
@@ -9,7 +20,7 @@ def show_menu():
     print("6. Exit")
 def main():
     while True:
-        show_menu()
+        Login()
         choice = input("Enter your choice: ")
 
         if choice == '1':
