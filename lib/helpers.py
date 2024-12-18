@@ -37,3 +37,8 @@ def display_all_accounts():
             print(f"Account Number: {account.account_number}, Account Holder: {account.account_holder_name}, Balance: {account.balance}")
     else:
         print("No accounts found.")
+def authenticate_user(username, password):
+    user = session.query(User).filter_by(username=username, password=password).first()
+    if user:
+        return {"username": user.username, "role": user.role}
+    return None
