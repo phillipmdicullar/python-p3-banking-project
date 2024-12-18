@@ -13,3 +13,14 @@ def deposit_money(account_number, amount):
         print(f"{amount} deposited successfully to account number {account_number}.")
     else:
         print("Account not found.")
+def withdraw_money(account_number, amount):
+    account = session.query(Account).filter(Account.account_number == account_number).first()
+    if account:
+        if account.balance >= amount:
+            account.balance -= amount
+            session.commit()
+            print(f"{amount} withdrawn successfully from account number {account_number}.")
+        else:
+            print("Insufficient balance.")
+    else:
+        print("Account not found.")
