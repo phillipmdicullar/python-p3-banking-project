@@ -4,7 +4,6 @@ def Login():
     username = input("Enter username: ")
     password = input("Enter password: ")
 
-    # Check if username and password are valid (for demonstration purposes, hardcoded credentials are used)
     if username == 'admin' and password == 'password':
         print("Login successful.")
         show_menu()

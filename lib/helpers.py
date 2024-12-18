@@ -10,6 +10,7 @@ def deposit_money(account_number, amount):
     if account:
         account.balance += amount
         session.commit()
+        session.close()
         print(f"{amount} deposited successfully to account number {account_number}.")
     else:
         print("Account not found.")
