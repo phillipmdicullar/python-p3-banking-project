@@ -5,3 +5,4 @@ def seed_accounts():
     session.commit()
 
     print("Initial accounts seeded.")
+seed_accounts()
