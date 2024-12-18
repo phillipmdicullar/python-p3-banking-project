@@ -24,3 +24,9 @@ def withdraw_money(account_number, amount):
             print("Insufficient balance.")
     else:
         print("Account not found.")
+def check_balance(account_number):
+    account = session.query(Account).filter(Account.account_number == account_number).first()
+    if account:
+        print(f"Account Balance for {account_number}: {account.balance}")
+    else:
+        print("Account not found.")
