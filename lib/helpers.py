@@ -30,3 +30,10 @@ def check_balance(account_number):
         print(f"Account Balance for {account_number}: {account.balance}")
     else:
         print("Account not found.")
+def display_all_accounts():
+    accounts = session.query(Account).all()
+    if accounts:
+        for account in accounts:
+            print(f"Account Number: {account.account_number}, Account Holder: {account.account_holder_name}, Balance: {account.balance}")
+    else:
+        print("No accounts found.")
