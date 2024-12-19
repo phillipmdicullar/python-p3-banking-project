@@ -1,19 +1,23 @@
 from animations import *
+import os
 from helpers import create_account,authenticate_user, deposit_money, withdraw_money, check_balance, display_all_accounts
 def Login():
-    print("--- Login ---")
-    Username = input("Enter username: ")
-    Password = input("Enter password: ")
-
-    if Username == 'admin' and Password == 'password':
-       
-        print("Login successful.")
+    print("--- Admin-Login-Panel ---")
+    typing_effect("Welcome to Python Bank! Please log in.")
+    username = input("Username: ")
+    password = input("Password: ")
+    user = authenticate_user(username, password)
+    if user:
+        typing_effect(f"Login successful! Welcome, {user['username']}.")
         
-        show_menu()
+        return user
     else:
-        print("Invalid credentials.")
+        print("Invalid username or password. Please try again.")
+        return login()
 def show_menu():
-    print("--- Welcome to the Python Bank ---")
+    os.system("clear")
+    os.system("toilet -f pagga -w $(tput cols) 'CODE [-_-] BANK'")
+    print("--- Welcome to (-_-) Bank ---")
     print("1. Create Account")
     print("2. Deposit Money")
     print("3. Withdraw Money")
@@ -23,7 +27,9 @@ def show_menu():
 def main():
     while True:
         show_logo()
+        
         Login()
+        
         choice = input("Enter your choice: ")
 
         if choice == '1':
