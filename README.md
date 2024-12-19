@@ -5,6 +5,17 @@
 * The Python CLI Banking System is a command-line application designed to simulate basic banking operations such as creating accounts, depositing money, withdrawing money, checking account balances, and displaying all accounts. 
 * This project showcases the use of Python fundamentals, SQLAlchemy ORM, and a structured CLI to create a practical solution to real-world banking problems.
 
+## Features
+- **Account Management**: Create, retrieve, and manage customer accounts.
+
+### Transactions:
+
+- Deposit money.
+- Withdraw money.
+- Check account balances.
+- **Data Persistence**: Store all account and transaction data in an SQLite database using SQLAlchemy ORM.
+-**User-Friendly CLI**: An intuitive command-line interface with animations and visual enhancements.
+-**Preloaded Users**: Default accounts for demonstration purposes.
 ## 🚀 Technologies used
 - **Python**: Core programming language.
 -**SQLAlchemy**: ORM for managing the SQLite database.
