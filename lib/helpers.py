@@ -38,8 +38,22 @@ def display_all_accounts():
             print(f"Account Number: {account.account_number}, Account Holder: {account.account_holder_name}, Balance: {account.balance}")
     else:
         print("No accounts found.")
+# List to store user data
+users = [
+    {"username": "admin", "password": "admin123", "role": "admin"},
+    {"username": "user1", "password": "password1", "role": "customer"},
+    {"username": "user2", "password": "password2", "role": "customer"},
+]
+
 def authenticate_user(username, password):
-    user = session.query(User).filter_by(username=username, password=password).first()
-    if user:
-        return {"username": user.username, "role": user.role}
+    for user in users:
+        if user["username"] == username and user["password"] == password:
+            return {"username": user["username"], "role": user["role"]}
     return None
+
+def signup_user(username, password, role="customer"):
+    for user in users:
+        if user["username"] == username:
+            return False  # User already exists
+    users.append({"username": username, "password": password, "role": role})
+    return True

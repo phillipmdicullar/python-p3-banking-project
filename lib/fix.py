@@ -1,20 +1,50 @@
-from animations import *
-import os
-from helpers import create_account,authenticate_user, deposit_money, withdraw_money, check_balance, display_all_accounts
-def Login():
-    print("--- Admin-Login-Panel ---")
-    print("Your default creds is username=admin password=password" )
-    print("This is only for simulation")
-    Username = input("Enter username: ")
-    Password = input("Enter password: ")
+from helpers import authenticate_user, signup_user
+from animations import typing_effect
 
-    if Username == 'admin' and Password == 'password':
-       
-        print("Login successful.")
-        
+def login():
+    while True:
+        print("--- Admin-Login-Panel ---")
+        typing_effect("Welcome to Python Bank! Please log in.")
+        user = authenticate_user(username, password)
+        if user:
+            typing_effect(f"Login successful! Welcome, {user['username']}.")
+            return user
+            show_menu()
+        else:
+            print("Invalid username or password. Please try again.")
+
+def signup():
+    print("--- Signup Panel ---")
+    typing_effect("Create a new account.")
+    username = input("Enter a username: ")
+    password = input("Enter a password: ")
+    if signup_user(username, password):
+        typing_effect(f"Account created successfully! Welcome, {username}.")
         show_menu()
     else:
-        print("Invalid credentials.")
+        print("Username already exists. Please try again.")
+
+def main():
+    while True:
+        print("--- Welcome to Python Bank ---")
+        print("1. Login")
+        print("2. Signup")
+        print("3. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            current_user = login()
+            if current_user:
+                # Show the banking menu based on role
+                print(f"Hello, {current_user['username']}! You are logged in as {current_user['role']}.")
+                # Add functionality for banking operations here
+        elif choice == '2':
+            signup()
+        elif choice == '3':
+            print("Thank you for using Python Bank!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 def show_menu():
     os.system("clear")
     os.system("toilet -f pagga -w $(tput cols) 'CODE [-_-] BANK'")
