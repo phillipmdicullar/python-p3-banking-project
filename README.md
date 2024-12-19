@@ -47,8 +47,8 @@
 
 - Clone the repository:
 
-```git clone <repository-url>```
-```cd python-cli-banking-system```
+```git clone https://github.com/phillipmdicullar/python-p3-banking-project```
+```cd python-p3-banking-project```
 
 ### Install dependencies:
 
