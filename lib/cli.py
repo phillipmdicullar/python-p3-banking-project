@@ -1,11 +1,14 @@
-from helpers import create_account, deposit_money, withdraw_money, check_balance, display_all_accounts
+from animations import *
+from helpers import create_account,authenticate_user, deposit_money, withdraw_money, check_balance, display_all_accounts
 def Login():
     print("--- Login ---")
-    username = input("Enter username: ")
-    password = input("Enter password: ")
+    Username = input("Enter username: ")
+    Password = input("Enter password: ")
 
-    if username == 'admin' and password == 'password':
+    if Username == 'admin' and Password == 'password':
+       
         print("Login successful.")
+        
         show_menu()
     else:
         print("Invalid credentials.")
@@ -19,6 +22,7 @@ def show_menu():
     print("6. Exit")
 def main():
     while True:
+        show_logo()
         Login()
         choice = input("Enter your choice: ")
 
@@ -27,11 +31,18 @@ def main():
             account_holder_name = input("Enter account holder name: ")
             initial_deposit = float(input("Enter initial deposit (default 0): ") or 0)
             create_account(account_number, account_holder_name, initial_deposit)
+            progress_bar("Creating account")
+            print("Account created successfully!")
+
+
 
         elif choice == '2':
             account_number = int(input("Enter account number: "))
             deposit_amount = float(input("Enter deposit amount: "))
             deposit_money(account_number, deposit_amount)
+            print("Depositing in your your account...")
+            loading_spinner()
+            print("Deposited successfully!")
 
         elif choice == '3':
             account_number = int(input("Enter account number: "))
@@ -40,9 +51,13 @@ def main():
 
         elif choice == '4':
             account_number = int(input("Enter account number: "))
+            print("Checking your balance...")
+            loading_spinner()
             check_balance(account_number)
 
+
         elif choice == '5':
+            loading_spinner()
             display_all_accounts()
 
         elif choice == '6':

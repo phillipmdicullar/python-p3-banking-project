@@ -28,3 +28,39 @@ def typing_effect(text, delay=0.05):
     print()  # Move to the next line after typing
 typing_effect("Welcome to Python Bank...")
 typing_effect("Let's get started!")
+def show_logo():
+    logo = """
+    ╔══════════════════════════════════════╗
+    ║          Welcome to Python Bank      ║
+    ║      Your Trusted Financial Partner  ║
+    ╚══════════════════════════════════════╝
+    """
+    print(logo)
+
+
+
+def countdown_timer(seconds=3, message="Redirecting to main menu"):
+    for i in range(seconds, 0, -1):
+        sys.stdout.write(f"\r{message} in {i} seconds...")
+        sys.stdout.flush()
+        time.sleep(1)
+    print("\nDone!")
+
+
+def show_colored_message():
+    print(Fore.GREEN + "Success! Your account has been created." + Style.RESET_ALL)
+    print(Fore.RED + "Error: Invalid account number." + Style.RESET_ALL)
+
+def atm_screen(message="Welcome to Python Bank"):
+    border = "=" * 30
+    print(border)
+    print(f"{message.center(30)}")
+    print(border)
+
+
+def money_deposit_animation():
+    for i in range(5):
+        sys.stdout.write("\r💵💵💵💵💵💵 " * (i + 1))
+        sys.stdout.flush()
+        time.sleep(0.5)
+    print("\nDeposit complete!")
